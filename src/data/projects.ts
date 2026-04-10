@@ -11,7 +11,7 @@ export const projects: Project[] = [
         metrics: '14+ упражнений · Drag & Drop · Графики · Тепловая карта · PWA-ready',
         demoUrl: 'https://liftforge.vercel.app',
         githubUrl: 'https://github.com/LesanePC/liftforge',
-        imageUrl: './img/liftforge.webp',
+        imageUrl: './img/Liftforge.webp',
         detailedStack: 'React 19, TypeScript, Zustand, Tailwind CSS, Recharts, @dnd-kit, Vercel',
         contribution: [
             'Разработал полноценное SPA-приложение для отслеживания силовых тренировок',
