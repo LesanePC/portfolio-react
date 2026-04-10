@@ -11,7 +11,7 @@ export const projects: Project[] = [
         metrics: '14+ упражнений · Drag & Drop · Графики · Тепловая карта · PWA-ready',
         demoUrl: 'https://liftforge.vercel.app',
         githubUrl: 'https://github.com/LesanePC/liftforge',
-        imageUrl: 'src/img/liftforge.webp',
+        imageUrl: './img/liftforge.webp',
         detailedStack: 'React 19, TypeScript, Zustand, Tailwind CSS, Recharts, @dnd-kit, Vercel',
         contribution: [
             'Разработал полноценное SPA-приложение для отслеживания силовых тренировок',
@@ -36,7 +36,7 @@ export const projects: Project[] = [
         metrics: 'React Hooks · TypeScript · Светлая/тёмная тема',
         demoUrl: 'https://lesanepc.github.io/react-todo',
         githubUrl: 'https://github.com/LesanePC/react-todo',
-        imageUrl: 'src/img/react-todo.webp',
+        imageUrl: './img/react-todo.webp',
         detailedStack: 'React 19, TypeScript, Vite, localStorage, CSS Modules',
         contribution: [
             'Разработал полноценное React-приложение с нуля',
@@ -60,7 +60,7 @@ export const projects: Project[] = [
         metrics: '+35% заявок · +2 мин время сессии · -15% отказов',
         demoUrl: 'https://lesanepc.github.io/altair-projects/',
         githubUrl: 'https://github.com/LesanePC/altair-projects',
-        imageUrl: 'src/img/altair.webp'
+        imageUrl: './img/altair.webp'
     },
     {
         id: 'remstroy',
@@ -71,7 +71,7 @@ export const projects: Project[] = [
         metrics: '8 успешных правок · 100% довольный клиент',
         demoUrl: 'https://lesanepc.github.io/Rem-Stroy/index.html',
         githubUrl: 'https://github.com/LesanePC/Rem-Stroy',
-        imageUrl: 'src/img/Rem-Stroy.webp'
+        imageUrl: './img/Rem-Stroy.webp'
     },
     {
         id: 'cinema',
@@ -82,7 +82,7 @@ export const projects: Project[] = [
         metrics: 'Загрузка &lt; 1.2 сек · Lighthouse 95/100',
         demoUrl: 'https://lesanepc.github.io/shfe-diplom/index.html',
         githubUrl: 'https://github.com/LesanePC/shfe-diplom',
-        imageUrl: 'src/img/Cinema.webp'
+        imageUrl: './img/Cinema.webp'
     },
     {
         id: 'bakery',
@@ -93,7 +93,7 @@ export const projects: Project[] = [
         metrics: '8+ анимаций · Mobile-first',
         demoUrl: 'https://lesanepc.github.io/bakery/',
         githubUrl: 'https://github.com/LesanePC/bakery',
-        imageUrl: 'src/img/Bakery.webp'
+        imageUrl: './img/Bakery.webp'
     },
     {
         id: 'todo',
@@ -104,7 +104,7 @@ export const projects: Project[] = [
         metrics: 'LocalStorage · 100% функционала',
         demoUrl: 'https://lesanepc.github.io/ToDo/',
         githubUrl: 'https://github.com/LesanePC/ToDo',
-        imageUrl: 'src/img/ToDo.webp'
+        imageUrl: './img/ToDo.webp'
     },
 
     // ==================== HTML/CSS ПРОЕКТЫ ====================
@@ -117,6 +117,6 @@ export const projects: Project[] = [
         metrics: '5 разрешений · Lighthouse 98/100',
         demoUrl: 'https://lesanepc.github.io/MQ-Diplom/',
         githubUrl: 'https://github.com/LesanePC/MQ-Diplom',
-        imageUrl: 'src/img/layouts.webp'
+        imageUrl: './img/layouts.webp'
     }
 ];

@@ -22,7 +22,7 @@ export const Hero = () => {
             </div>
             <div className="welcome-visual">
                 <div className="about-photo-wrapper">
-                    <img src="src/img/Fokin.webp" alt="Евгений Фокин - Frontend Developer" loading="lazy" />
+                    <img src="./img/Fokin.webp" alt="Евгений Фокин - Frontend Developer" loading="lazy" />
                 </div>
             </div>
         </section>
