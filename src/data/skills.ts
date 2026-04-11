@@ -8,5 +8,6 @@ export const skills: Skill[] = [
     { icon: "fab fa-figma", color: "#f24e1e", text: "Figma · Pixel-perfect верстка" },
     { icon: "fas fa-chart-line", color: "#64c8fa", text: "SEO · Доступность (a11y) · Open Graph" },
     { icon: "fas fa-code", color: "#007acc", text: "VS Code · ESLint · Prettier · Chrome DevTools" },
-    { icon: "fab fa-node-js", color: "#68a063", text: "Node.js (основы) · NPM" }
+    { icon: "fab fa-node-js", color: "#68a063", text: "Node.js (основы) · NPM" },
+    { icon: "fas fa-language", color: "#64c8fa", text: "English — Intermediate (B1) · Reading docs · In progress" }
 ];
