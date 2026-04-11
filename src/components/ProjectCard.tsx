@@ -3,12 +3,21 @@ import type { Project } from '../types';
 interface ProjectCardProps {
     project: Project;
     onOpenModal: (project: Project) => void;
+    onOpenImageViewer: (images: string[], index: number) => void;
 }
 
-export const ProjectCard = ({ project, onOpenModal }: ProjectCardProps) => {
+export const ProjectCard = ({ project, onOpenModal, onOpenImageViewer }: ProjectCardProps) => {
+    const projectImages = [project.imageUrl];
+
     return (
         <article className="gallery-item" data-category={project.category}>
-            <img src={project.imageUrl} alt={project.title} loading="lazy" />
+            <div 
+                className="project-image" 
+                onClick={() => onOpenImageViewer(projectImages, 0)}
+                style={{ cursor: 'pointer' }}
+            >
+                <img src={project.imageUrl} alt={project.title} loading="lazy" />
+            </div>
             <h3>{project.title}</h3>
             <p className="tech-stack">{project.techStack}</p>
             <p className="project-role">

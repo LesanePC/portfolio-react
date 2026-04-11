@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { projects } from '../data/projects';
 import { ProjectCard } from './ProjectCard';
 import type { Project } from '../types';
@@ -8,10 +7,10 @@ type FilterType = 'all' | 'html-css' | 'javascript' | 'react';
 
 interface ProjectsProps {
     onOpenModal: (project: Project) => void;
+    onOpenImageViewer: (images: string[], index: number) => void;
 }
 
-export const Projects = ({ onOpenModal }: ProjectsProps) => {
-    const sectionRef = useScrollAnimation();
+export const Projects = ({ onOpenModal, onOpenImageViewer }: ProjectsProps) => {
     const [filter, setFilter] = useState<FilterType>('all');
 
     const filteredProjects = projects.filter((project: Project) => {
@@ -27,7 +26,7 @@ export const Projects = ({ onOpenModal }: ProjectsProps) => {
     };
 
     return (
-        <section ref={sectionRef} className="section" id="projects">
+        <section className="section" id="projects">
             <h2>Проекты</h2>
             
             <div className="filter-container">
@@ -63,6 +62,7 @@ export const Projects = ({ onOpenModal }: ProjectsProps) => {
                         key={project.id} 
                         project={project} 
                         onOpenModal={onOpenModal}
+                        onOpenImageViewer={onOpenImageViewer}
                     />
                 ))}
             </div>
