@@ -4,119 +4,84 @@ export const projects: Project[] = [
     // ==================== REACT ПРОЕКТЫ ====================
     {
         id: 'liftforge',
-        title: 'LiftForge — Fitness Tracker',
+        title: 'LiftForge - Fitness Tracker',
         category: 'react',
         techStack: 'React 19 · TypeScript · Zustand · Tailwind CSS · Recharts · Vercel',
-        description: 'Полноценный трекер силовых тренировок с визуализацией прогресса и личными рекордами.',
-        metrics: '14+ упражнений · Drag & Drop · Графики · Тепловая карта · PWA-ready',
-        demoUrl: 'https://liftforge.vercel.app',
+        description: 'Трекер силовых тренировок с визуализацией прогресса, библиотекой упражнений и авторасчётом личных рекордов.',
+        metrics: '14+ упражнений · Drag & Drop · графики · тепловая карта · PWA-ready',
+        demoUrl: 'https://liftforge-mu.vercel.app/',
         githubUrl: 'https://github.com/LesanePC/liftforge',
         imageUrl: './img/Liftforge.webp',
         detailedStack: 'React 19, TypeScript, Zustand, Tailwind CSS, Recharts, @dnd-kit, Vercel',
         contribution: [
-            'Разработал полноценное SPA-приложение для отслеживания силовых тренировок',
-            'Реализовал CRUD операции для тренировок с автоматическим расчётом тоннажа',
-            'Создал библиотеку упражнений (14 стандартных + добавление своих) с категориями',
-            'Добавил Drag & Drop для сортировки упражнений в тренировке (@dnd-kit)',
-            'Реализовал страницу прогресса с графиками (Recharts), тепловой картой и личными рекордами',
-            'Добавил автоматическое отслеживание серии тренировок (streak)',
-            'Создал историю тренировок с поиском, сортировкой и редактированием',
-            'Реализовал тёмную/светлую тему с сохранением выбора (Zustand persist)',
-            'Добавил экспорт/импорт данных в JSON для бэкапа',
-            'Настроил адаптивный дизайн и деплой на Vercel (автоматическое обновление)'
+            'CRUD тренировок с автоматическим расчётом тоннажа и серий (streak)',
+            'Библиотека упражнений (14 стандартных + пользовательские) с категориями',
+            'Drag & Drop для сортировки упражнений (@dnd-kit)',
+            'Страница прогресса: графики (Recharts), тепловая карта, личные рекорды',
+            'История тренировок с поиском, сортировкой и редактированием',
+            'Тёмная/светлая тема (Zustand persist), экспорт/импорт данных JSON',
+            'Адаптивный дизайн, деплой на Vercel'
         ],
-        result: 'Полноценный трекер тренировок с визуализацией прогресса, библиотекой упражнений и автоматическим расчётом личных рекордов.'
+        result: 'Полнофункциональный трекер с автосохранением и аналитикой прогресса.'
     },
     {
         id: 'react-todo',
-        title: 'Task Manager — React Todo App',
+        title: 'Task Manager',
         category: 'react',
-        techStack: 'React 19 · TypeScript · Vite · localStorage · Тёмная тема',
-        description: 'Современное приложение для управления задачами с приоритетами, фильтрами и автосохранением.',
-        metrics: 'React Hooks · TypeScript · Светлая/тёмная тема',
+        techStack: 'React 19 · TypeScript · Vite · localStorage',
+        description: 'Управление задачами с приоритетами, фильтрами по дате и тёмной темой.',
+        metrics: 'CRUD · фильтрация · сортировка · адаптив',
         demoUrl: 'https://lesanepc.github.io/react-todo',
         githubUrl: 'https://github.com/LesanePC/react-todo',
         imageUrl: './img/react-todo.webp',
         detailedStack: 'React 19, TypeScript, Vite, localStorage, CSS Modules',
         contribution: [
-            'Разработал полноценное React-приложение с нуля',
-            'Реализовал управление задачами (CRUD) с приоритетами и датами',
-            'Добавил фильтрацию по статусу и дате (сегодня/завтра/неделя)',
-            'Реализовал сортировку по дате, приоритету и названию',
-            'Создал светлую и тёмную тему с сохранением выбора',
-            'Настроил адаптивный дизайн с боковой панелью',
-            'Настроил деплой на GitHub Pages через Vite'
+            'CRUD задач с приоритетами и датами',
+            'Фильтрация по статусу и дате (сегодня/завтра/неделя)',
+            'Сортировка по дате, приоритету, названию',
+            'Светлая/тёмная тема с сохранением',
+            'Адаптивный дизайн, деплой на GitHub Pages'
         ],
-        result: 'Полноценное приложение для планирования задач с сохранением в localStorage.'
+        result: 'Планировщик с сохранением данных в localStorage.'
     },
 
-    // ==================== JAVASCRIPT ПРОЕКТЫ ====================
+    // ==================== КОММЕРЧЕСКИЕ ПРОЕКТЫ (JavaScript) ====================
     {
         id: 'altair',
         title: 'Альтаир Недвижимость',
         category: 'javascript',
-        techStack: 'HTML5 · CSS3 · JavaScript (ES6+) · SEO · Доступность',
-        description: 'Корпоративный сайт агентства недвижимости (6 страниц).',
+        techStack: 'HTML5 · CSS3 · JavaScript (ES6+) · SEO · доступность',
+        description: 'Корпоративный сайт агентства недвижимости (6 страниц). Динамическая фильтрация объектов без перезагрузки.',
         metrics: '+35% заявок · +2 мин время сессии · -15% отказов',
         demoUrl: 'https://lesanepc.github.io/altair-projects/',
         githubUrl: 'https://github.com/LesanePC/altair-projects',
-        imageUrl: './img/altair.webp'
+        imageUrl: './img/altair.webp',
+        detailedStack: 'HTML5, CSS3, JavaScript (ES6+), адаптивная вёрстка, SEO, доступность',
+        contribution: [
+            'Разработал frontend с нуля: 6 страниц, адаптив, интерактивные элементы',
+            'Реализовал фильтрацию объектов по параметрам без перезагрузки страницы',
+            'Оптимизировал скорость загрузки и SEO (метатеги, Open Graph)',
+            'Обеспечил доступность (aria-label, семантическая вёрстка)'
+        ],
+        result: 'По данным заказчика: рост заявок на 35%, увеличение времени сессии до 2 минут, снижение отказов на 15%.'
     },
     {
         id: 'remstroy',
-        title: 'Строительная компания',
+        title: 'РемСтрой (строительная компания)',
         category: 'javascript',
-        techStack: 'HTML · CSS · JavaScript · Адаптивная верстка',
-        description: 'Коммерческий проект: 3 страницы, год поддержки и продление контракта.',
-        metrics: '8 успешных правок · 100% довольный клиент',
+        techStack: 'HTML · CSS · JavaScript · адаптивная вёрстка',
+        description: 'Многостраничный сайт с плавным скроллом, подсветкой меню и кнопкой «наверх».',
+        metrics: 'год поддержки · продление контракта',
         demoUrl: 'https://lesanepc.github.io/Rem-Stroy/index.html',
         githubUrl: 'https://github.com/LesanePC/Rem-Stroy',
-        imageUrl: './img/Rem-Stroy.webp'
-    },
-    {
-        id: 'cinema',
-        title: 'Киносайт + Админка',
-        category: 'javascript',
-        techStack: 'HTML · SCSS · JavaScript · Fetch API · LocalStorage',
-        description: 'Дипломный проект: полнофункциональный кино-портал с админ-панелью и 200+ фильмами.',
-        metrics: 'Загрузка &lt; 1.2 сек · Lighthouse 95/100',
-        demoUrl: 'https://lesanepc.github.io/shfe-diplom/index.html',
-        githubUrl: 'https://github.com/LesanePC/shfe-diplom',
-        imageUrl: './img/Cinema.webp'
-    },
-    {
-        id: 'bakery',
-        title: 'Bakery — Сайт пекарни',
-        category: 'javascript',
-        techStack: 'HTML · CSS · JavaScript · Анимации',
-        description: 'Промо-сайт с анимациями и адаптивной версткой.',
-        metrics: '8+ анимаций · Mobile-first',
-        demoUrl: 'https://lesanepc.github.io/bakery/',
-        githubUrl: 'https://github.com/LesanePC/bakery',
-        imageUrl: './img/Bakery.webp'
-    },
-    {
-        id: 'todo',
-        title: 'ToDo — Планировщик задач',
-        category: 'javascript',
-        techStack: 'HTML · CSS · JavaScript · LocalStorage',
-        description: 'SPA-приложение: добавление, редактирование, фильтры задач.',
-        metrics: 'LocalStorage · 100% функционала',
-        demoUrl: 'https://lesanepc.github.io/ToDo/',
-        githubUrl: 'https://github.com/LesanePC/ToDo',
-        imageUrl: './img/ToDo.webp'
-    },
-
-    // ==================== HTML/CSS ПРОЕКТЫ ====================
-    {
-        id: 'blog',
-        title: 'Адаптивный блог',
-        category: 'html-css',
-        techStack: 'HTML · CSS · Flex/Grid · Адаптивная типографика',
-        description: 'Pixel-perfect верстка по макету Figma.',
-        metrics: '5 разрешений · Lighthouse 98/100',
-        demoUrl: 'https://lesanepc.github.io/MQ-Diplom/',
-        githubUrl: 'https://github.com/LesanePC/MQ-Diplom',
-        imageUrl: './img/layouts.webp'
+        imageUrl: './img/Rem-Stroy.webp',
+        detailedStack: 'HTML, CSS, JavaScript (ES6+), адаптив, оптимизация событий',
+        contribution: [
+            'Разработал сайт с нуля: 3 страницы, адаптивная вёрстка',
+            'Реализовал плавный скролл, динамическую подсветку активного пункта меню',
+            'Оптимизировал обработку событий прокрутки для плавной работы на всех устройствах',
+            'Сопровождал проект в течение года: доработки, исправления'
+        ],
+        result: 'Контракт продлён на год.'
     }
 ];
