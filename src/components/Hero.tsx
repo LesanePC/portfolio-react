@@ -1,7 +1,7 @@
 import { useTypewriter } from '../hooks/useTypewriter';
 
 export const Hero = () => {
-    const { displayText } = useTypewriter('Frontend Developer | бывший CEO', 70);
+    const { displayText } = useTypewriter('Frontend Developer | Управленческий опыт 10+ лет', 70);
 
     return (
         <section className="section welcome" id="welcome">
@@ -20,7 +20,7 @@ export const Hero = () => {
             </div>
             <div className="welcome-visual">
                 <div className="about-photo-wrapper">
-                    <img src="./img/Fokin.webp" alt="Евгений Фокин — фронтенд-разработчик с управленческим опытом" />
+                    <img src="./img/Fokin.webp" alt="Евгений Фокин - фронтенд-разработчик" />
                 </div>
             </div>
         </section>

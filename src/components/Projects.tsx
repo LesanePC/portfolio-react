@@ -25,38 +25,44 @@ export const Projects = ({ onOpenModal, onOpenImageViewer }: ProjectsProps) => {
         react: projects.filter((p: Project) => p.category === 'react').length
     };
 
+    const filterButtons: { key: FilterType; label: string }[] = [
+        { key: 'all', label: `Все проекты (${counts.all})` },
+        { key: 'html-css', label: `HTML/CSS (${counts['html-css']})` },
+        { key: 'javascript', label: `JavaScript (${counts.javascript})` },
+        { key: 'react', label: `React (${counts.react})` },
+    ];
+
     return (
         <section className="section" id="projects">
             <h2>Проекты</h2>
             
-            <div className="filter-container">
-                <button 
-                    className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-                    onClick={() => setFilter('all')}
-                >
-                    Все проекты ({counts.all})
-                </button>
-                <button 
-                    className={`filter-btn ${filter === 'html-css' ? 'active' : ''}`}
-                    onClick={() => setFilter('html-css')}
-                >
-                    HTML/CSS ({counts['html-css']})
-                </button>
-                <button 
-                    className={`filter-btn ${filter === 'javascript' ? 'active' : ''}`}
-                    onClick={() => setFilter('javascript')}
-                >
-                    JavaScript ({counts.javascript})
-                </button>
-                <button 
-                    className={`filter-btn ${filter === 'react' ? 'active' : ''}`}
-                    onClick={() => setFilter('react')}
-                >
-                    React ({counts.react})
-                </button>
+            <div 
+                className="filter-container" 
+                role="tablist" 
+                aria-label="Фильтр проектов по категориям"
+            >
+                {filterButtons.map(({ key, label }) => {
+                    const isActive = filter === key;
+                    return (
+                        <button
+                            key={key}
+                            className={`filter-btn ${isActive ? 'active' : ''}`}
+                            onClick={() => setFilter(key)}
+                            aria-pressed={isActive}
+                            role="tab"
+                        >
+                            {label}
+                        </button>
+                    );
+                })}
             </div>
 
-            <div className="gallery-grid">
+            <div 
+                className="gallery-grid"
+                role="list"
+                aria-live="polite"
+                aria-label="Список проектов"
+            >
                 {filteredProjects.map((project: Project) => (
                     <ProjectCard 
                         key={project.id} 

@@ -16,7 +16,7 @@ export const ProjectCard = ({ project, onOpenModal, onOpenImageViewer }: Project
                 onClick={() => onOpenImageViewer(projectImages, 0)}
                 style={{ cursor: 'pointer' }}
             >
-                <img src={project.imageUrl} alt={project.title} loading="lazy" />
+                <img src={project.imageUrl} alt={`Скриншот проекта: ${project.title}`} loading="lazy" />
             </div>
             <h3>{project.title}</h3>
             <p className="tech-stack">{project.techStack}</p>
