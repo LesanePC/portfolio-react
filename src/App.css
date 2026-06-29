@@ -1126,6 +1126,68 @@ main {
 }
 
 /* ==========================================================================
+   ЧЕКБОКС СОГЛАСИЯ
+========================================================================== */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+    margin-top: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    margin-top: 3px;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 234, 255, 0.3);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.checkbox-group input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.checkbox-group input[type="checkbox"][aria-invalid="true"] {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.3);
+}
+
+.checkbox-group label {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-group label a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.checkbox-group label a:hover {
+    color: var(--text-color);
+}
+
+.light-theme .checkbox-group label a:hover {
+    color: #111;
+}
+
+/* ==========================================================================
    МОДАЛЬНОЕ ОКНО ПРОЕКТОВ
 ========================================================================== */
 .modal {
@@ -1457,5 +1519,15 @@ footer {
         width: 44px;
         height: 44px;
         font-size: 1.2rem;
+    }
+    .checkbox-group input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        margin-top: 2px;
+    }
+
+    .checkbox-group label {
+        font-size: 0.85rem;
     }
 }

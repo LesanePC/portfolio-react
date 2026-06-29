@@ -1,10 +1,15 @@
 import { useState, useRef } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-export const Contacts = () => {
+interface ContactsProps {
+    onOpenPrivacyModal: () => void;
+}
+
+export const Contacts = ({ onOpenPrivacyModal }: ContactsProps) => {
     const sectionRef = useScrollAnimation();
     const [formStatus, setFormStatus] = useState<{ message: string; type: 'success' | 'error' | '' }>({ message: '', type: '' });
     const [copyMessage, setCopyMessage] = useState('');
+    const [isConsentChecked, setIsConsentChecked] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
 
     const handleCopyEmail = async () => {
@@ -40,6 +45,11 @@ export const Contacts = () => {
             return;
         }
 
+        if (!isConsentChecked) {
+            setFormStatus({ message: 'Необходимо дать согласие на обработку персональных данных', type: 'error' });
+            return;
+        }
+
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
@@ -50,6 +60,7 @@ export const Contacts = () => {
             if (response.ok) {
                 setFormStatus({ message: 'Спасибо за ваше сообщение!', type: 'success' });
                 form.reset();
+                setIsConsentChecked(false);
             } else {
                 setFormStatus({ message: 'Ошибка при отправке. Попробуйте позже.', type: 'error' });
             }
@@ -106,17 +117,49 @@ export const Contacts = () => {
                     noValidate
                 >
                     <label htmlFor="name">Ваше имя:</label>
-                    <input type="text" id="name" name="name" placeholder="Введите имя" required />
+                    <input type="text" id="name" name="name" placeholder="Введите имя" required aria-required="true" />
 
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Введите email" required autoComplete="email" />
+                    <input type="email" id="email" name="email" placeholder="Введите email" required autoComplete="email" aria-required="true" />
 
                     <label htmlFor="message">Сообщение:</label>
-                    <textarea id="message" name="message" placeholder="Ваше сообщение" required></textarea>
+                    <textarea id="message" name="message" placeholder="Ваше сообщение" required aria-required="true"></textarea>
+
+                    {/* Чекбокс согласия */}
+                    <div className="form-group checkbox-group">
+                        <input
+                            type="checkbox"
+                            id="consent"
+                            name="consent"
+                            checked={isConsentChecked}
+                            onChange={(e) => setIsConsentChecked(e.target.checked)}
+                            required
+                            aria-required="true"
+                            aria-invalid={!isConsentChecked && formStatus.type === 'error'}
+                        />
+                        <label htmlFor="consent">
+                            Я согласен на обработку персональных данных в соответствии с 
+                            <a 
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    onOpenPrivacyModal();
+                                }}
+                                aria-label="Политика конфиденциальности"
+                            >
+                                политикой конфиденциальности
+                            </a>
+                        </label>
+                    </div>
 
                     <button type="submit">Отправить</button>
+
                     {formStatus.message && (
-                        <div className={`form-message ${formStatus.type === 'success' ? 'success' : 'error'}`}>
+                        <div 
+                            className={`form-message ${formStatus.type === 'success' ? 'success' : 'error'}`}
+                            role="alert"
+                            aria-live="polite"
+                        >
                             {formStatus.message}
                         </div>
                     )}

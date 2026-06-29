@@ -26,6 +26,7 @@ function App() {
     const [showCourseModal, setShowCourseModal] = useState(false);
     const [viewerImages, setViewerImages] = useState<string[]>([]);
     const [viewerIndex, setViewerIndex] = useState<number>(-1);
+    const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
     const previousFocusedElement = useRef<HTMLElement | null>(null);
 
@@ -34,18 +35,21 @@ function App() {
         setViewerIndex(index);
     };
 
+    // --- Закрытие по Escape ---
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 if (selectedProject) setSelectedProject(null);
                 if (showCourseModal) setShowCourseModal(false);
                 if (viewerIndex !== -1) setViewerIndex(-1);
+                if (showPrivacyModal) setShowPrivacyModal(false);
             }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [selectedProject, showCourseModal, viewerIndex]);
+    }, [selectedProject, showCourseModal, viewerIndex, showPrivacyModal]);
 
+    // --- Фокус для модалки проекта ---
     useEffect(() => {
         if (selectedProject) {
             previousFocusedElement.current = document.activeElement as HTMLElement;
@@ -57,6 +61,7 @@ function App() {
         }
     }, [selectedProject]);
 
+    // --- Фокус для модалки курса ---
     useEffect(() => {
         if (showCourseModal) {
             previousFocusedElement.current = document.activeElement as HTMLElement;
@@ -68,6 +73,19 @@ function App() {
         }
     }, [showCourseModal]);
 
+    // --- Фокус для модалки политики ---
+    useEffect(() => {
+        if (showPrivacyModal) {
+            previousFocusedElement.current = document.activeElement as HTMLElement;
+            const titleEl = document.getElementById('privacy-modal-title');
+            if (titleEl) titleEl.focus();
+        } else if (previousFocusedElement.current) {
+            previousFocusedElement.current.focus();
+            previousFocusedElement.current = null;
+        }
+    }, [showPrivacyModal]);
+
+    // --- Тёмная тема ---
     useEffect(() => {
         if (theme === 'light') {
             document.body.classList.add('light-theme');
@@ -90,7 +108,7 @@ function App() {
                     onOpenImageViewer={openImageViewer}
                 />
                 <Skills />
-                <Contacts />
+                <Contacts onOpenPrivacyModal={() => setShowPrivacyModal(true)} />
             </main>
             <Footer />
 
@@ -188,6 +206,60 @@ function App() {
                 </div>
             )}
 
+            {/* Модалка политики конфиденциальности */}
+            {showPrivacyModal && (
+                <div 
+                    className="modal show" 
+                    onClick={() => setShowPrivacyModal(false)}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="privacy-modal-title"
+                >
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button 
+                            className="modal-close" 
+                            onClick={() => setShowPrivacyModal(false)}
+                            aria-label="Закрыть политику конфиденциальности"
+                        >
+                            &times;
+                        </button>
+                        <h2 id="privacy-modal-title" tabIndex={-1}>Политика конфиденциальности</h2>
+                        <div>
+                            <p><strong>Последнее обновление:</strong> 29 июня 2026 г.</p>
+                            <h3>1. Общие положения</h3>
+                            <p>
+                                Настоящая политика конфиденциальности регулирует обработку персональных данных, 
+                                которые пользователь предоставляет через форму обратной связи на сайте 
+                                <a href="https://lesanepc.github.io/portfolio-react" target="_blank" rel="noopener noreferrer"> 
+                                    lesanepc.github.io/portfolio-react
+                                </a>.
+                            </p>
+                            <h3>2. Какие данные собираются</h3>
+                            <ul>
+                                <li>Имя пользователя</li>
+                                <li>Адрес электронной почты</li>
+                                <li>Текст сообщения</li>
+                            </ul>
+                            <h3>3. Цель обработки</h3>
+                            <p>Данные используются исключительно для ответа на запросы пользователей.</p>
+                            <h3>4. Срок хранения</h3>
+                            <p>Данные хранятся до момента ответа на обращение и не передаются третьим лицам.</p>
+                            <h3>5. Права пользователя</h3>
+                            <p>Пользователь вправе запросить удаление своих данных, написав на <strong>evgen94@bk.ru</strong>.</p>
+                            <h3>6. Контактная информация</h3>
+                            <p>По вопросам обработки данных обращайтесь по email: <strong>evgen94@bk.ru</strong></p>
+                            <button 
+                                className="close-details-btn" 
+                                onClick={() => setShowPrivacyModal(false)}
+                            >
+                                Закрыть
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Просмотрщик изображений */}
             <Suspense fallback={<div>Загрузка просмотрщика...</div>}>
                 <ImageViewer 
                     images={viewerImages} 
