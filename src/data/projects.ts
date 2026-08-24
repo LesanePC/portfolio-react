@@ -25,6 +25,26 @@ export const projects: Project[] = [
         result: 'Полнофункциональный трекер с автосохранением и аналитикой прогресса.'
     },
     {
+    id: 'altair-react',
+    title: 'Альтаир Недвижимость (React + TypeScript)',
+    category: 'react',
+    techStack: 'React 19 · TypeScript · Vite · CSS Modules · ESLint · Husky',
+    description: 'Миграция корпоративного сайта агентства недвижимости с чистого JS на React и TypeScript для улучшения поддерживаемости и масштабируемости.',
+    metrics: 'SPA · компонентный подход · изолированные стили · типизация',
+    demoUrl: 'https://github.com/LesanePC/altair-react',
+    githubUrl: 'https://github.com/LesanePC/altair-react',
+    imageUrl: './img/Altair.react.webp',
+    detailedStack: 'React 19, TypeScript, Vite, CSS Modules, ESLint, Prettier, Husky, React Router',
+    contribution: [
+        'Переписал сайт с чистого HTML/CSS/JS на React с TypeScript и компонентной архитектурой',
+        'Внедрил CSS Modules для изоляции стилей каждого компонента',
+        'Настроил ESLint, Prettier и Husky для автоматической проверки кода перед коммитами',
+        'Организовал структуру проекта: компоненты, страницы, типы, утилиты',
+        'Использовал Vite для быстрой сборки и разработки с HMR'
+    ],
+    result: 'Проект переведён на современный стек, что упростило его поддержку и ускорило разработку новых фич.'
+},
+    {
         id: 'react-todo',
         title: 'Task Manager',
         category: 'react',
