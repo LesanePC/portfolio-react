@@ -12,6 +12,9 @@ export const Contacts = ({ onOpenPrivacyModal }: ContactsProps) => {
     const [isConsentChecked, setIsConsentChecked] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
 
+    // --- API URL из переменной окружения ---
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
     const handleCopyEmail = async () => {
         const email = 'evgen94@bk.ru';
         try {
@@ -26,49 +29,57 @@ export const Contacts = ({ onOpenPrivacyModal }: ContactsProps) => {
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const form = e.currentTarget;
-        const formData = new FormData(form);
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    const name = (formData.get('name') as string)?.trim();
+    const email = (formData.get('email') as string)?.trim();
+    const message = (formData.get('message') as string)?.trim();
+
+    if (!name || !email || !message) {
+        setFormStatus({ message: 'Пожалуйста, заполните все поля', type: 'error' });
+        return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        setFormStatus({ message: 'Введите корректный email', type: 'error' });
+        return;
+    }
+
+    if (!isConsentChecked) {
+        setFormStatus({ message: 'Необходимо дать согласие на обработку персональных данных', type: 'error' });
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_URL}/api/leads`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message }),
+        });
+
         
-        const name = (formData.get('name') as string)?.trim();
-        const email = (formData.get('email') as string)?.trim();
-        const message = (formData.get('message') as string)?.trim();
-
-        if (!name || !email || !message) {
-            setFormStatus({ message: 'Пожалуйста, заполните все поля', type: 'error' });
-            return;
-        }
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setFormStatus({ message: 'Введите корректный email', type: 'error' });
-            return;
-        }
-
-        if (!isConsentChecked) {
-            setFormStatus({ message: 'Необходимо дать согласие на обработку персональных данных', type: 'error' });
-            return;
-        }
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                headers: { 'Accept': 'application/json' },
-                body: formData,
+        if (response.ok) {
+            setFormStatus({ message: 'Спасибо за ваше сообщение!', type: 'success' });
+            form.reset();
+            setIsConsentChecked(false);
+        } else { 
+            const errorData = await response.json().catch(() => ({}));
+            setFormStatus({ 
+                message: errorData.message || 'Ошибка при отправке. Попробуйте позже.', 
+                type: 'error' 
             });
-
-            if (response.ok) {
-                setFormStatus({ message: 'Спасибо за ваше сообщение!', type: 'success' });
-                form.reset();
-                setIsConsentChecked(false);
-            } else {
-                setFormStatus({ message: 'Ошибка при отправке. Попробуйте позже.', type: 'error' });
-            }
-        } catch (error) {
-            console.error('Network error:', error);
-            setFormStatus({ message: 'Ошибка сети. Проверьте подключение.', type: 'error' });
         }
-    };
+    } catch (error) {
+        console.error('Network error:', error);
+        setFormStatus({ 
+            message: 'Ошибка сети. Проверьте подключение к серверу.', 
+            type: 'error' 
+        });
+    }
+};
 
     return (
         <section ref={sectionRef} className="section" id="contacts">

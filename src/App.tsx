@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -11,6 +12,8 @@ import { Footer } from './components/Footer';
 import { CanvasBackground } from './components/CanvasBackground';
 import { useTheme } from './hooks/useTheme';
 import type { Project } from './types';
+import { Admin } from './pages/Admin';
+import { Login } from './pages/Login';
 import './App.css';
 
 const ImageViewer = lazy(() =>
@@ -19,7 +22,7 @@ const ImageViewer = lazy(() =>
     }))
 );
 
-function App() {
+function HomePage() {
     const { theme, toggleTheme } = useTheme();
 
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -268,6 +271,18 @@ function App() {
                 />
             </Suspense>
         </div>
+    );
+}
+
+function App() {
+    return (
+        <HashRouter>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/admin" element={<Admin />} />
+            </Routes>
+        </HashRouter>
     );
 }
 
