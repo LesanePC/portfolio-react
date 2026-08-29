@@ -31,18 +31,27 @@ export const Hero = () => {
                 </p>
 
                 <div className="welcome-buttons">
-                    <a href="#projects" className="btn-primary">
-                        Смотреть проекты
-                    </a>
+    <button 
+        onClick={() => {
+            document.getElementById('projects')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }} 
+        className="btn-primary"
+    >
+        Смотреть проекты
+    </button>
 
-                    <a
-                        href="/assets/cv/Fokin-Frontend.pdf"
-                        download
-                        className="btn-secondary"
-                    >
-                        Скачать резюме
-                    </a>
-                </div>
+    <a
+        href="/assets/cv/Fokin-Frontend.pdf"
+        download
+        className="btn-secondary"
+    >
+        Скачать резюме
+    </a>
+</div>
+
             </div>
 
             <div className="welcome-visual">
